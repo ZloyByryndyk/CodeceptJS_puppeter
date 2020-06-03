@@ -9,7 +9,7 @@ exports.config = {
   output: "./output",
   helpers: {
     Puppeteer: {
-      url: "http://dev.estchange.io/",
+      url: "http://dev.estchange.io",
       show: true,
       windowSize: "1200x900",
     },

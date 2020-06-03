@@ -20,8 +20,11 @@ Scenario("Start onboarding now", (I) => {
 
 Scenario("Privacy Policy", (I) => {
   I.amOnPage("http://dev.estchange.io/");
-  I.click("Privacy Policy");
+  I.click(".full-service__item-text a");
   I.amOnPage("/TOS/2");
+  // I.wait(5);
+  // I.click(".breadcrumbs .breadcrumbs__link");
+  // I.amOnPage("http://dev.estchange.io/");
 });
 
 Scenario("3rd party KYC system", (I) => {
