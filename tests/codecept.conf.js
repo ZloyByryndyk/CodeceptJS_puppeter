@@ -9,6 +9,7 @@ exports.config = {
   output: "./output",
   helpers: {
     Puppeteer: {
+      // Тут указываем базовый url, параметр show - показываем сам тест, windowSize - окно браузера.
       url: "http://dev.estchange.io",
       show: true,
       windowSize: "1200x900",
