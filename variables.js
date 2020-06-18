@@ -1,5 +1,5 @@
 //Статичные данные для тестов, в сами тесты вставляем только переменные
-const Obj = {
+const dataHelper = {
   defaultPass: "Parabellum0793",
   Login: "damitra@yandex.ru",
   Password: "Parabellum0793",
@@ -10,4 +10,4 @@ const Obj = {
   invalidCode: "fdsfsdfsfs",
 };
 
-module.exports = Obj;
+module.exports = dataHelper;
