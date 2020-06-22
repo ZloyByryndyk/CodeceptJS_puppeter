@@ -10,12 +10,13 @@ Scenario("Successful", (I) => {
   I.fillField("person-email", dataHelper.Login);
   I.fillField("person-password", dataHelper.defaultPass);
   I.click("LOGIN");
+  I.wait(1);
   I.fillField("#code", "123456");
   I.click("CONFIRM");
   I.seeCurrentUrlEquals("/dashboard/balances");
 });
 
-Scenario("Successful with GA CODE", (I) => {
+Scenario("Successful with GA CODE autho", (I) => {
   I.amOnPage("/");
   I.click("Accept");
   I.amOnPage("/login/");
@@ -24,14 +25,16 @@ Scenario("Successful with GA CODE", (I) => {
   I.click("LOGIN");
   I.click("individual");
   I.click("Next");
+  I.wait(1);
   I.fillField("#code", dataHelper.SMScode);
   I.click("CONFIRM");
+  I.wait(1);
   I.fillField("#code", dataHelper.SMScode);
   I.click("CONFIRM");
   I.seeCurrentUrlEquals("/dashboard/balances");
 });
 
-Scenario("Invalid Validation Email", (I) => {
+Scenario("Invalid Validation Email autho", (I) => {
   I.amOnPage("/");
   I.click("Accept");
   I.amOnPage("/login/");
@@ -39,7 +42,7 @@ Scenario("Invalid Validation Email", (I) => {
   I.see("Please, enter a valid email address.");
 });
 
-Scenario("Invalid login/pass", (I) => {
+Scenario("Invalid login/pass autho", (I) => {
   I.amOnPage("/");
   I.click("Accept");
   I.amOnPage("/login/");
@@ -51,18 +54,18 @@ Scenario("Invalid login/pass", (I) => {
   );
 });
 
-Scenario("Invalid pass", (I) => {
+Scenario("Invalid pass autho", (I) => {
   I.amOnPage("/");
   I.click("Accept");
   I.amOnPage("/login/");
-  I.fillField("person-email", dataHelper.Login);
+  I.fillField("person-email", dataHelper.InvalidPassword);
   I.click("LOGIN");
   I.see(
     "The email address or password you entered is incorrect. Please try again."
   );
 });
 
-Scenario("Password reset", (I) => {
+Scenario("Password reset autho", (I) => {
   I.amOnPage("/");
   I.click("Accept");
   I.amOnPage("/login/");
@@ -72,7 +75,7 @@ Scenario("Password reset", (I) => {
   I.seeElement("#code");
 });
 
-Scenario("Password reset invalid code", (I) => {
+Scenario("Password reset invalid code autho", (I) => {
   I.amOnPage("/");
   I.click("Accept");
   I.amOnPage("/login/");
@@ -90,10 +93,13 @@ Scenario("Password reset successful", (I) => {
   I.click("Forgot your password");
   I.fillField("Your e-mail", dataHelper.Login);
   I.click("Start reset password");
+  I.wait(1);
   I.fillField("#code", dataHelper.SMScode);
   I.click("CONFIRM");
+  I.wait(1);
   I.fillField("#code", dataHelper.SMScode);
   I.click("CONFIRM");
+  I.wait(1);
   I.fillField("#code", dataHelper.SMScode);
   I.click("CONFIRM");
   I.fillField("#password", "Parabellum0793");
@@ -104,7 +110,7 @@ Scenario("Password reset successful", (I) => {
   I.see("Login");
 });
 
-Scenario("Password reset invalid email", (I) => {
+Scenario("Password reset invalid email autho", (I) => {
   I.amOnPage("/");
   I.click("Accept");
   I.amOnPage("/login/");
