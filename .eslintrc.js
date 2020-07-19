@@ -9,5 +9,7 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 11,
   },
-  rules: {},
+  // Сюда добавляем правила для чистоты кода
+  rules: { "codeceptjs/no-pause-in-scenario"
+  },
 };

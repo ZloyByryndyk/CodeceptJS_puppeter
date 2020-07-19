@@ -4,7 +4,7 @@ const assert = require("assert");
 
 const dataHelper = require("../variables");
 
-Scenario("Filter check slow", (I) => {
+Scenario("Filter check", (I) => {
   I.amOnPage("/");
   I.click("Accept");
   I.amOnPage("/login/");
@@ -48,7 +48,7 @@ Scenario("Filter check slow", (I) => {
   // I.dontSee("USDT_ERC20");
 });
 
-Scenario("Purchase order slow", (I) => {
+Scenario("Purchase order", (I) => {
   I.amOnPage("/");
   I.click("Accept");
   I.amOnPage("/login/");
@@ -74,7 +74,7 @@ Scenario("Purchase order slow", (I) => {
   I.see("Success!");
 });
 
-Scenario("Field cleaning slow", async (I) => {
+Scenario("Field cleaning", async (I) => {
   I.amOnPage("/");
   I.click("Accept");
   I.amOnPage("/login/");
@@ -105,7 +105,7 @@ Scenario("Field cleaning slow", async (I) => {
   assert.equal(amound2.length === 0, true);
 });
 
-Scenario("Exit session slow", (I) => {
+Scenario("Exit session", (I) => {
   I.amOnPage("/");
   I.click("Accept");
   I.amOnPage("/login/");
@@ -131,7 +131,7 @@ Scenario("Exit session slow", (I) => {
   I.see("Canceled by Client");
 });
 
-Scenario("Sell ​​order slow", (I) => {
+Scenario("Sell ​​order", (I) => {
   I.amOnPage("/");
   I.click("Accept");
   I.amOnPage("/login/");
@@ -155,4 +155,43 @@ Scenario("Sell ​​order slow", (I) => {
   I.click("Create");
   I.click("ACCEPT");
   I.see("Success!");
+});
+
+Scenario("Backoffice", (I) => {
+  I.amOnPage("/");
+  I.click("Accept");
+  I.amOnPage("/login/");
+  I.fillField("person-email", dataHelper.Login);
+  I.fillField("person-password", dataHelper.Password);
+  I.click("LOGIN");
+  I.click("individual");
+  I.click("Next");
+  I.wait(1);
+  // I.fillField("#code", dataHelper.SMScode);
+  // I.click("CONFIRM");
+  // I.wait(1);
+  // I.fillField("#code", dataHelper.SMScode);
+  // I.click("CONFIRM");
+  I.seeCurrentUrlEquals("/dashboard/balances");
+  I.click(locate("button").withText("Buy").at(1));
+  I.click(locate(".root__title").withText("OTC TRADING"));
+  I.selectOption(".form-control", "BTC/EUR");
+  I.fillField("#amount", "0.02");
+  I.fillField("#price", "0.02");
+  I.click("Create");
+  I.wait(2);
+  I.openNewTab("http://dev-backoffice.estchange.io/login");
+  I.amOnPage("http://dev-backoffice.estchange.io/login");
+  I.fillField("#email", dataHelper.BackofficeLogin);
+  I.fillField("#password", dataHelper.BackofficePassword);
+  I.click("Login");
+  I.wait(3);
+  I.click("Details");
+  I.click("Assign to me");
+  I.click("Continue");
+  I.wait(2);
+  I.click("Accept");
+  I.click("Continue");
+  I.closeCurrentTab();
+  I.see("Accepted by Trader");
 });

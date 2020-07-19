@@ -8,6 +8,8 @@ const dataHelper = {
   InvalidLogin: "damfsdfsdfsra@yandex.ru",
   InvalidPassword: "fhbdshfbdsfshb",
   invalidCode: "fdsfsdfsfs",
+  BackofficeLogin: "admin@local.host",
+  BackofficePassword: "123456",
 };
 
 module.exports = dataHelper;
